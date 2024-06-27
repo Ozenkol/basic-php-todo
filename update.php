@@ -18,6 +18,11 @@
         echo '<div class="item">';
         echo '<h2>'.$todo->title.'</h2>';
         echo '<p>'.$todo->details.'</p>';
+        echo '<form action="updated.php" method="POST">';
+        echo 'New title: <input type="text" name="title">';
+        echo 'New details: <input type="text" name="details">';
+        echo '<button type="submit" name="id" value='.$todo->id.'>Update</button>';
+        echo '</form>';
         echo '</div>';
         include 'footer.inc.php';
     ?>
