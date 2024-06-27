@@ -1,0 +1,32 @@
+.header {
+    background-color: skyblue;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+}
+
+.list {
+    background-color: white;
+}
+
+.item {
+    background-color: azure;
+    border: solid;
+    margin: 10px;
+    padding: 5px 5px 5px 5px;
+}
+
+.todo-action {
+    background-color: silver;
+    margin: 10px 10px 10px 10px;
+    padding: 5px 5px 5px 5px;
+}
+
+.footer {
+    background-color: skyblue;
+    margin: 10px 10px 10px 10px;
+    padding: 5px 5px 5px 5px;
+}
+
+#details-input {
+    overflow: auto;
+}
