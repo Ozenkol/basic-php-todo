@@ -19,8 +19,8 @@
         echo '<h2>'.$todo->title.'</h2>';
         echo '<p>'.$todo->details.'</p>';
         echo '<form action="updated.php" method="POST">';
-        echo 'New title: <input type="text" name="title">';
-        echo 'New details: <input type="text" name="details">';
+        echo 'New title: <input type="text" name="title" value="'.$todo->title.'">';
+        echo 'New details: <input type="text" name="details" value="'.$todo->details.'">';
         echo '<button type="submit" name="id" value='.$todo->id.'>Update</button>';
         echo '</form>';
         echo '</div>';
