@@ -8,16 +8,22 @@
     <body>
         <?php 
             include 'header.inc.php';
+            $username = 'admin';
+            $password = 'admin';
         ?>
         <main>
             <?php
-                if (!isset($_SERVER['PHP_AUTH_USER'])) {
+                if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {
                     header('WWW-Authenticate: Basic realm="My Realm"');
                     header('HTTP/1.0 401 Unauthorized');
                     echo 'Текст, отправляемый в том случае,
                     если пользователь нажал кнопку Cancel';
                     exit;
                 } else {
+                    if ($_SERVER['PHP_AUTH_USER'] != $username ||
+                        $_SERVER['PHP_AUTH_PW'] != $password) {
+                        die("<p>Invalid username/password combination</p>");
+                    }
                     echo '<form action="add.php" method="post" class="todo-action">
                         Title <input type="text" name="title">
                         Details <input id="details-input" type="text" name="details">
