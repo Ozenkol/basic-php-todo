@@ -7,34 +7,32 @@
     </head>
     <body>
         <?php 
+            if (!session_id()) {
+                session_start();
+                session_regenerate_id();
+            }
             include 'header.inc.php';
-            $username = 'admin';
-            $password = 'admin';
         ?>
         <main>
-            <?php
-                if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {
-                    header('WWW-Authenticate: Basic realm="My Realm"');
-                    header('HTTP/1.0 401 Unauthorized');
-                    echo 'Текст, отправляемый в том случае,
-                    если пользователь нажал кнопку Cancel';
-                    exit;
-                } else {
-                    if ($_SERVER['PHP_AUTH_USER'] != $username ||
-                        $_SERVER['PHP_AUTH_PW'] != $password) {
-                        die("<p>Invalid username/password combination</p>");
-                    }
-                    echo '<form action="add.php" method="post" class="todo-action">
-                        Title <input type="text" name="title">
-                        Details <input id="details-input" type="text" name="details">
-                        <input type="submit">
-                        </form>';
-                    echo '<div class=item>Hello '.$_SERVER['PHP_AUTH_USER'].' ';
-                    echo '<a href="logout.php">Log out</a>';
-                    echo  '</div>';
-                    include 'todolist.inc.php';
-                }
-            ?>
+            <?php if (!isset($_SESSION['user'])):?>
+                <form action="login.php" method="post" class="todo-action">
+                    Enter username: <input type="text" name="username">
+                    Enter password: <input type="text" name="password">
+                    <button type="submit" name="login">Login</button>
+                </form>
+            <?php else:?>
+                <form action="add.php" method="post" class="todo-action">
+                    Title <input type="text" name="title">
+                    Details <input id="details-input" type="text" name="details">
+                    <input type="submit">
+                </form>
+                <form action="logout.php" method="POST" class="todo-action">
+                    <button type="submit">Log out</button>
+                </form>
+                <?php 
+                    include 'todolist.inc.php'
+                ?>
+            <?php endif;?>
         </main>
         <?php
             include 'footer.inc.php';
