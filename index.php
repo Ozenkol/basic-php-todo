@@ -19,6 +19,8 @@
                     Enter username: <input type="text" name="username">
                     Enter password: <input type="text" name="password">
                     <button type="submit" name="login">Login</button>
+                    <p>Or</p>
+                    <p><a href="setup.php">Create user</a></p>
                 </form>
             <?php else:?>
                 <form action="add.php" method="post" class="todo-action">

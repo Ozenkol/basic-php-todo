@@ -1,3 +1,3 @@
 <footer class="footer">
-    <p>Year <?= date('Y') ?></p>
+    Year <?= date('Y') ?>
 </footer>

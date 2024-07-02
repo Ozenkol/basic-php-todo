@@ -14,11 +14,11 @@
         if ($row) {
             $_SESSION['user'] = $row['id'];
             $_SESSION['username'] = $row['username'];
-            echo '<p>Success</p>';
+            echo '<h2>Success</h2>';
             echo '<a href="index.php">Back to home</a>';
         }
         else {
-            echo '<p>Error</p>
+            echo '<h2>Error</h2>
                 <a href="index.php">Back to home</a>';
         }
     }
